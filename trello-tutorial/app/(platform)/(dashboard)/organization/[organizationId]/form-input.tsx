@@ -1,9 +1,8 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
 import { useFormStatus } from "react-dom";
-
-
 
 interface FormInputProps {
     errors?: {
@@ -11,10 +10,10 @@ interface FormInputProps {
     }
 }
 
-
 export const FormInput = ({ errors }: FormInputProps) => {
     
     const { pending } = useFormStatus();
+    const [inputValue, setInputValue] = useState("");
     
     return (
         <div>
@@ -24,6 +23,8 @@ export const FormInput = ({ errors }: FormInputProps) => {
                 required
                 placeholder="Enter a board title"
                 disabled={pending}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
             />
              {errors?.title ? (
                     <div>

@@ -20,18 +20,18 @@ const CreateBoard = z.object({
 
 export async function create(prevState: State, formData: FormData) {
 
-    const validateField = CreateBoard.safeParse({
+    const validateFields = CreateBoard.safeParse({
         title: formData.get("title"),
     });
 
-    if (!validateField.success) {
+    if (!validateFields.success) {
         return {
-            errors: validateField.error.flatten().fieldErrors,
-            message: null
+            errors: validateFields.error.flatten().fieldErrors,
+            message: null,
         }
     }
 
-    const { title } = validateField.data;
+    const { title } = validateFields.data;
 
     try {
         await db.board.create({
