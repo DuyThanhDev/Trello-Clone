@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+// @ts-ignore: CSS module types not declared for side-effect import
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 
